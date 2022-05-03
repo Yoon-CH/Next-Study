@@ -1,12 +1,13 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import LayOut from "../components/LayOut";
 import "../styles/globals.css";
 
 const _app = ({ Component, pageProps }) => {
   return (
     <>
-      <NavBar />
-      <Component {...pageProps} />
+      <LayOut>
+        <Component {...pageProps} />
+      </LayOut>
       <style jsx global>{`
         a {
           color: red;
