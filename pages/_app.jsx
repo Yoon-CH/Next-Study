@@ -10,7 +10,7 @@ const _app = ({ Component, pageProps }) => {
       </LayOut>
       <style jsx global>{`
         a {
-          color: red;
+          color: #a2aeef;
         }
       `}</style>
     </>
