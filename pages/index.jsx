@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HeadName from "../components/HeadName";
 
-const index = () => {
-  const [movies, setMovies] = useState();
-
-  useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch(`/api/movies`)).json();
-      setMovies(results);
-    })();
-  }, []);
-
+const index = ({ results }) => {
   return (
     <div className="container">
       <HeadName title="Home" />
-      {!movies && <h3>Loading...</h3>}
-      {movies?.map((movie) => (
+      {results?.map((movie) => (
         <div className="movie" key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
@@ -47,3 +37,14 @@ const index = () => {
 };
 
 export default index;
+
+export const getServerSideProps = async () => {
+  const { results } = await (
+    await fetch(`http://localhost:3000/api/movies`)
+  ).json();
+  return {
+    props: {
+      results,
+    },
+  };
+};
