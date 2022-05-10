@@ -3,8 +3,11 @@ import React from "react";
 
 const Detail = () => {
   const router = useRouter();
-  console.log(router);
-  return <div>Detail</div>;
+  return (
+    <>
+      <h4>{router.query.title || "Loading..."}</h4>
+    </>
+  );
 };
 
 export default Detail;
